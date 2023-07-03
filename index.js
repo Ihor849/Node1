@@ -18,11 +18,11 @@ const options = program.opts();
 
 const invokeAction = async ({ action, id, name, email, phone }) => {
   switch (action) {
-    case "readContacts":
+    case "list":
       const allContacts = await contacts.listContacts();
       return console.log(allContacts);
 
-    case "getById":
+    case "get":
       const contact = await contacts.getContactById(id);
       return console.log(contact);
     case "remove":
@@ -35,27 +35,6 @@ const invokeAction = async ({ action, id, name, email, phone }) => {
       console.log("Unknown action type!");
   }
 };
-// invokeAction({action: 'readContacts'});
-// invokeAction({action: 'getById', id: 2});
-// invokeAction({action: 'remove', id: 'e6ywwRe4jcqxXfCZOj_1e'});
-// invokeAction({
-//   action: "add",
-//   name: "Muran",
-//   email: "drew@gmail.com",
-//   phone: "54-45-55",
-// });
-
-// console.log(process.argv);
-// const actionIndex = process.argv.indexOf('--action');
-// if(actionIndex !==-1){
-//   const action = process.argv[actionIndex +1];
-//   // console.log( action);
-//   invokeAction({action})
-// }
-
-// const arr = hideBin(process.argv);
-// const {argv}= yargs(arr);
-// invokeAction(argv);
 
 
 invokeAction(options);
